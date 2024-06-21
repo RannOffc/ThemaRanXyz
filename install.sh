@@ -64,28 +64,20 @@ install_jq() {
   clear
 }
 
-# Array untuk menyimpan token-token yang valid
-valid_tokens=("RanXyz")
+TOKEN_URL="https://getpantry.cloud/apiv1/pantry/193fc4cd-d144-46a9-a342-a1e0bcec4849/basket/newBasket55"
 
-# Fungsi untuk melakukan login pengguna
-autentikasi() {
-  diautentikasi lokal=salah
-  echo -e "Masukkan token:"
-  baca -r USER_TOKEN
-  
-  # Memeriksa apakah token pengguna cocok dengan salah satu dari token-token valid
-  untuk token di "${valid_tokens[@]}"; Mengerjakan
-    jika [ "$USER_TOKEN" == "$token" ]; Kemudian
-      diautentikasi=benar
-      merusak
-    fi
-  Selesai
-  
-  jika ! $ diautentikasi; Kemudian
-    echo -e "${MERAH}Token tidak valid.Keluar.${NC}"
-    keluar 1
-  fi
-}
+# Mendapatkan token dari URL JSON
+TOKEN=$(curl -s "$TOKEN_URL" | jq -r .token)
+
+# Meminta pengguna untuk memasukkan token
+read -p "Masukan Tokennya : " USER_TOKEN
+# Memverifikasi token
+if [ "$USER_TOKEN" != "$TOKEN" ]; then
+  echo "Token Salahh!!"
+  exit 1
+else
+  echo "Token Benarrr!!"
+fi
 
 # Install theme
 install_theme() {
