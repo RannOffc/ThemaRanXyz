@@ -64,7 +64,7 @@ install_jq() {
   clear
 }
 
-TOKEN_URL="https://getpantry.cloud/apiv1/pantry/193fc4cd-d144-46a9-a342-a1e0bcec4849/basket/newBasket55"
+TOKEN_URL="https://getpantry.cloud/apiv1/pantry/c4a7d113-85fe-48c7-a60a-6949d946f7c0/basket/themetoken"
 
 # Mendapatkan token dari URL JSON
 TOKEN=$(curl -s "$TOKEN_URL" | jq -r .token)
