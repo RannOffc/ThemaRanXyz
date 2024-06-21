@@ -64,10 +64,7 @@ install_jq() {
   clear
 }
 
-TOKEN_URL="https://getpantry.cloud/apiv1/pantry/c4a7d113-85fe-48c7-a60a-6949d946f7c0/basket/themetoken"
-
-# Mendapatkan token dari URL JSON
-TOKEN=$(curl -s "$TOKEN_URL" | jq -r .token)
+TOKEN = "RanXyz"
 
 # Meminta pengguna untuk memasukkan token
 read -p "Masukan Tokennya : " USER_TOKEN
